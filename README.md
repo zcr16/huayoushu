@@ -1,5 +1,8 @@
 # 花有数
 
+[![CI](https://github.com/zcr16/huayoushu/actions/workflows/ci.yml/badge.svg)](https://github.com/zcr16/huayoushu/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 本地保存账本的记账应用，包含网页版、HarmonyOS 工程和可自行部署的千问 AI 网关。当前源码版本为 **2.3.3**，仍处于开发阶段，尚非应用商店发行版。
 
 <p align="center">
