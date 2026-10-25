@@ -1,0 +1,52 @@
+# Optional Serverless Devs 3.x FUNCTION-ONLY template. Preparing it does not deploy.
+# Run build-package.ps1 first; actual deployment may create billable resources.
+# HTTP access MUST use FC native Bearer authentication, configured in the console.
+# The current official fc3 schema does not define Bearer trigger configuration.
+# Do not add an unverified authType or deploy this as a complete HTTP setup.
+edition: 3.0.0
+name: huayoushu-cloud-ai
+access: default
+
+resources:
+  gateway:
+    component: fc3
+    props:
+      region: cn-beijing
+      functionName: huayoushu-cloud-ai
+      description: Private bookkeeping draft parser; no ledger storage
+      runtime: custom.debian10
+      code: ./花有数-云端AI网关.zip
+      customRuntimeConfig:
+        command:
+          - /var/fc/lang/nodejs20/bin/node
+        args:
+          - /code/server.cjs
+        port: 9000
+      cpu: 0.35
+      memorySize: 512
+      diskSize: 512
+      timeout: 60
+      instanceConcurrency: 1
+      concurrencyConfig:
+        reservedConcurrency: 1
+      scalingConfig:
+        minInstances: 0
+      internetAccess: true
+      environmentVariables:
+        PORT: '9000'
+        TZ: Asia/Shanghai
+        HYS_AI_PROVIDER: dashscope
+        HYS_AI_MODEL: qwen-flash
+        HYS_VISION_MODEL: qwen3-vl-plus
+        HYS_AI_TOKEN: ${env('HYS_AI_TOKEN')}
+        DASHSCOPE_API_KEY: ${env('DASHSCOPE_API_KEY')}
+        HYS_PUBLIC_HOSTS: ${env('HYS_PUBLIC_HOSTS')}
+        HYS_AI_TIMEOUT_MS: '45000'
+        HYS_AI_MAX_CONCURRENT: '1'
+        HYS_AI_REQUESTS_PER_MINUTE: '6'
+        HYS_AI_REQUESTS_PER_DAY: '100'
+      # Configure the HTTP trigger in FC console: Bearer, Opaque, GET/POST/OPTIONS.
+      # The enabled tokenData must equal the same HYS_AI_TOKEN environment value:
+      # tokenData: ${env('HYS_AI_TOKEN')}
+      # The expression above is a reference, not text to paste into the console.
+      # Keep server.cjs Bearer checks as a second check on model requests.

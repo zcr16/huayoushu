@@ -1,0 +1,29 @@
+{
+  "name": "huayoushu-ledger",
+  "version": "2.3.3",
+  "private": true,
+  "description": "花有数：本地账本、预算提醒与开源模型辅助记账",
+  "scripts": {
+    "start": "node server.cjs",
+    "test": "node --test tests/core.test.cjs tests/ledger.test.cjs tests/ai.test.cjs tests/wechat.test.cjs tests/receipt.test.cjs",
+    "package:harmony": "node harmonyos/scripts/package-web.mjs",
+    "test:ui": "node tests/ui-v2.cjs",
+    "test:native": "node --test harmonyos/tests/capture-lifecycle.cjs harmonyos/tests/floating-lifecycle.cjs",
+    "test:float": "node tests/ui-float.cjs",
+    "test:receipt": "node tests/ui-receipt.cjs",
+    "test:ui:all": "node tests/run-ui.cjs",
+    "test:receipt:packaged": "node tests/run-ui.cjs --packaged --receipt",
+    "test:browser:install": "playwright install chromium"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "echarts": "6.1.0"
+  },
+  "devDependencies": {
+    "playwright": "1.64.1",
+    "typescript": "4.9.5"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

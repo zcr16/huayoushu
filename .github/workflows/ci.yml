@@ -1,0 +1,25 @@
+name: Ledger checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run test:native
+      - run: npm run package:harmony
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:receipt:packaged

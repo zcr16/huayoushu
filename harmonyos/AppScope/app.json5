@@ -1,0 +1,10 @@
+{
+  "app": {
+    "bundleName": "com.huayoushu.ledger",
+    "vendor": "Huayoushu",
+    "versionCode": 2003003,
+    "versionName": "2.3.3",
+    "icon": "$media:app_icon",
+    "label": "$string:app_name"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "记录每笔花销，掌握每天、每周、每月的预算与去向。"
+    },
+    {
+      "name": "microphone_reason",
+      "value": "仅在你点击语音记账时，将说出的消费转为可核对的文字。"
+    },
+    {
+      "name": "screen_capture_reason",
+      "value": "仅在你选择截图记账后获取当前账单画面，并交给云端千问识图；不写入相册，核对后才入账。"
+    },
+    {
+      "name": "float_view_reason",
+      "value": "点击人物时展开截图记账和互动菜单；互动不截屏、不上传画面。"
+    }
+  ]
+}
